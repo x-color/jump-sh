@@ -69,7 +69,7 @@ function jump {
   if [ "$#" != "0" ]
   then
     # Jump to tag
-    local _dir_path=`grep -w -E "^$1" ~/.jump_tags | cut -d , -f2`
+    local _dir_path=`grep -w "^$1" ~/.jump_tags | cut -d , -f2`
     if [ "$_dir_path" = "" ]
     then
       # Error : cannot find tag in .jump_tags
