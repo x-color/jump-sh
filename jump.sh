@@ -42,16 +42,16 @@ function jump {
   # Add tag
   if [ "$_flg_add" = "TRUE" ]
   then
-    local DIC_PATH=`pwd`
-    local CHECK=`grep -e '^'$_tag_add',' ~/.jump_tags`
-    if [ "$CHECK" != "" ]
+    local dic_path=`pwd`
+    local _check=`grep -e '^'$_tag_add',' ~/.jump_tags`
+    if [ "$_check" != "" ]
     then
       # Error : tag is already resistered in .jump_tags
       echo -e "[$_tag_add] is already registered in tags." 1>&2
       return 1
     else
       # Add
-      echo "$_tag_add,$DIC_PATH" >> ~/.jump_tags
+      echo "$_tag_add,$dic_path" >> ~/.jump_tags
     fi
   fi
 
@@ -69,15 +69,15 @@ function jump {
   if [ "$#" != "0" ]
   then
     # Jump to tag
-    local DIR_PATH=`grep -w -E "^$1" ~/.jump_tags | cut -d , -f2`
-    if [ "$DIR_PATH" = "" ]
+    local _dir_path=`grep -w -E "^$1" ~/.jump_tags | cut -d , -f2`
+    if [ "$_dir_path" = "" ]
     then
       # Error : cannot find tag in .jump_tags
       echo "[$1] can not find in tags." 1>&2
       return 1
     else
       # Jump
-      cd $DIR_PATH
+      cd $_dir_path
     fi
   elif [ "$OPTIND" = "1" ]
   then
