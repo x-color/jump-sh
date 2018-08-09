@@ -1,15 +1,15 @@
 function _usage_jump {
   echo "Usage:"
-  echo "  jump [-d TAG] [-l] [-h] [-t TAG] TAG"
+  echo "  jump [-a TAG] [-d TAG] [-l] [-h] TAG"
   echo ""
   echo "Description:"
   echo "  Jump to tagging directory"
   echo ""
   echo "Options:"
+  echo "  -a    add tag for current directory"
   echo "  -d    delete tag"
   echo "  -l    list up tags"
-  echo "  -h    print help message"
-  echo "  -t    add tag for current directory"
+  echo "  -h    print this help"
 }
 
 function jump {
@@ -17,16 +17,16 @@ function jump {
   local _flg_add _flg_del _flg_lst _tag_add _tag_del
 
   # Options parser
-  while getopts d:lht: OPT
+  while getopts a:d:lh OPT
   do
     case $OPT in
+      "a" ) _flg_add="TRUE"
+            _tag_add="$OPTARG" ;;
       "d" ) _flg_del="TRUE"
             _tag_del="$OPTARG" ;;
       "l" ) _flg_lst="TRUE" ;;
       "h" ) _usage_jump
             return 1 ;;
-      "t" ) _flg_add="TRUE"
-            _tag_add="$OPTARG" ;;
         * ) _usage_jump
             return 1 ;;
     esac
