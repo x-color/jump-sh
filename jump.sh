@@ -42,7 +42,7 @@ function jump {
   # Add tag
   if [ "$_flg_add" = "TRUE" ]
   then
-    local dic_path=`pwd`
+    local _dic_path=`pwd`
     local _check=`grep -e '^'$_tag_add',' ~/.jump_tags`
     if [ "$_check" != "" ]
     then
@@ -51,7 +51,7 @@ function jump {
       return 1
     else
       # Add
-      echo "$_tag_add,$dic_path" >> ~/.jump_tags
+      echo "$_tag_add,$_dic_path" >> ~/.jump_tags
     fi
   fi
 
