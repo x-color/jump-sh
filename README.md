@@ -2,6 +2,8 @@
 
 ディレクトリにタグをつけ、指定したタグに移動するためのスクリプト。
 
+![demo](https://github.com/x-color/jump-sh/blob/master/imgs/demo.gif)
+
 ## 使用例
 
 ```bash
